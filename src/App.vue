@@ -8,6 +8,6 @@
 
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+@import 'assets/theme/index.scss';
 </style>

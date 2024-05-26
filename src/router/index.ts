@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import TasksView from '../views/TasksView.vue'
+import { isUserLoggedIn } from '@core/auth/utils'
+import AuthView from 'views/AuthView.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -8,14 +8,31 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: AuthView
     },
     {
       path: '/tasks',
       name: 'tasks',
-      component: TasksView
+      component: () => import('views/TasksView.vue'),
+      meta: {
+        requiresAuth: true,
+      },
     }
   ]
+})
+
+router.beforeEach((to, from, next) => {
+  const isLoggedIn = isUserLoggedIn()
+
+  if (to.meta?.requiresAuth && !isLoggedIn) {
+    return next({ name: 'home' })
+  }
+
+  if (to.meta?.requiresAuth && isLoggedIn) {
+    return next()
+  }
+
+  return next()
 })
 
 
