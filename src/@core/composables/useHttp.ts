@@ -45,8 +45,6 @@ export const useHttp = (options) => {
     try {
       isLoading.value = true
 
-      // await delay(1000)
-
       const response = await axios({
         method: opts.method,
         params: params ?? {},

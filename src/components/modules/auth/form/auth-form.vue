@@ -23,9 +23,9 @@
 
 import AppInput from 'components/modules/ui/app-input.vue'
 import AppButton from 'components/modules/ui/app-button.vue'
-import { reactive, ref } from 'vue'
+import { reactive } from 'vue'
 import AppInputValidator from 'components/modules/ui/app-input-validator.vue'
-import { required, alpha, numeric, helpers } from '@vuelidate/validators'
+import { required, alpha, helpers } from '@vuelidate/validators'
 import useVuelidate from '@vuelidate/core'
 import useAuth from '@core/auth/useAuth'
 import { useLoading } from '@core/composables/useLoading'
@@ -54,20 +54,17 @@ const handleSubmit = async () => {
 
   if (!noErrors) return
 
-  const params = {
+  const body = {
     username: username.value,
     phone: phone.value
   }
 
   setLoading()
-  authService.login({ params }).then(({ data }) => {
-    const user = data[0]
-
-    if(!user) {
-      alert('Login Error')
-    }
+  await authService.login(body).then((user) => {
     authService.setUser(user)
     router.push('/tasks')
+  }).catch((e) => {
+    alert(e.message)
   }).finally(() => resetLoading())
 }
 </script>

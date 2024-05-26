@@ -16,9 +16,23 @@ export default class AuthService {
     this.axiosIns = { ...this.axiosIns, ...authOverrideConfig }
   }
 
-  login(...args) {
+  async login(body) {
+    const { data } = await this.axiosIns.get(this.authConfig.loginResource)
 
-    return this.axiosIns.get(this.authConfig.loginResource, ...args)
+    if(!data) {
+      throw new Error('Something went wrong')
+    }
+
+    const filteredUsers = data.filter(user =>
+      user.phone === body.phone && user.nickname === body.nickname
+    )
+
+
+    if(!filteredUsers.length) {
+      throw new Error('Login Error')
+    }
+
+    return filteredUsers[0]
   }
 
   setUser(value) {
