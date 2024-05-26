@@ -1,6 +1,7 @@
 import { BuildOptions } from './types/config';
+import webpack from 'webpack'
 
-export const buildWebpackLoaders = (options: BuildOptions) => {
+export const buildWebpackLoaders = (options: BuildOptions): webpack.RuleSetRule[] => {
   const vueLoader =  {
     test: /\.vue$/,
     loader: 'vue-loader'
