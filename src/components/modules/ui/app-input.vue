@@ -59,6 +59,7 @@ export default {
     return {
       themes: {
         default: 'default',
+        secondary: 'secondary',
       },
     }
   },
@@ -87,6 +88,11 @@ export default {
     padding: 8px;
     width: 100%;
     border: none;
+  }
+
+  &.secondary {
+    border: 1px solid rgba(60, 60, 60, 0.26);
+    border-radius: 0;
   }
 }
 </style>

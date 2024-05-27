@@ -14,7 +14,7 @@
       </app-input-validator>
     </div>
     <div class="auth-form__submit">
-      <app-button :disabled="loading">Register</app-button>
+      <app-button :disabled="loading">Login</app-button>
     </div>
   </form>
 </template>
@@ -62,7 +62,7 @@ const handleSubmit = async () => {
   setLoading()
   await authService.login(body).then((user) => {
     authService.setUser(user)
-    router.push('/tasks')
+    router.push('/todos')
   }).catch((e) => {
     alert(e.message)
   }).finally(() => resetLoading())

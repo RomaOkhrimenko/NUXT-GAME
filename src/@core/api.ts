@@ -1,3 +1,4 @@
 export const API = {
-  getUsersResource: '/users'
+  getUsersResource: '/users',
+  getTodosResource: '/todos',
 }

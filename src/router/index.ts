@@ -11,9 +11,9 @@ const router = createRouter({
       component: AuthView
     },
     {
-      path: '/tasks',
-      name: 'tasks',
-      component: () => import('views/TasksView.vue'),
+      path: '/todos',
+      name: 'todos',
+      component: () => import('views/TodosView.vue'),
       meta: {
         requiresAuth: true,
       },

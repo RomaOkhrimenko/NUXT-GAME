@@ -39,11 +39,13 @@ export default class AuthService {
     localStorage.setItem(this.authConfig.storageUserDataKeyName, JSON.stringify(value))
   }
 
-  getUser(value) {
-    localStorage.getItem(this.authConfig.storageUserDataKeyName)
+  getUser() {
+    return JSON.parse(localStorage.getItem(this.authConfig.storageUserDataKeyName))
   }
 
   removeUser() {
     localStorage.removeItem(this.authConfig.storageUserDataKeyName)
   }
+
+
 }

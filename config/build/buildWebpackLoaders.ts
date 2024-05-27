@@ -8,10 +8,10 @@ export const buildWebpackLoaders = (options: BuildOptions): webpack.RuleSetRule[
   }
 
   const cssLoader = {
-    test: /\.s[ac]ss$/i,
+    test: /\.(css|s[ac]ss)$/i,
     use: [
       'vue-style-loader',
-      'css-loader'
+      'css-loader',
     ],
   };
 

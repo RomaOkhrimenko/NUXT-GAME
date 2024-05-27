@@ -6,11 +6,7 @@
   "scripts": {
     "dev": "npx webpack serve --open",
     "build:prod": "npx webpack --env mode=production",
-    "build:dev": "npx webpack --env mode=development",
-    "lint:ts": "eslint \"**/*.{ts,vue}\"",
-    "lint:ts:fix": "eslint \"**/*.{ts,vue}\" --fix",
-    "ling:scss": "npx stylelint \"**/*.scss\"\n",
-    "ling:scss:fix": "npx stylelint \"**/*.scss\"\n --fix"
+    "build:dev": "npx webpack --env mode=development"
   },
   "dependencies": {
     "@vuelidate/core": "^2.0.3",
@@ -20,6 +16,7 @@
     "vue": "^3.4.27",
     "vue-router": "^4.3.2",
     "vue-style-loader": "^4.1.3",
+    "vue-select": "^4.0.0-beta.3",
     "vue-template-compiler": "^2.7.16"
   },
   "devDependencies": {
