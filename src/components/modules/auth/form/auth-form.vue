@@ -54,13 +54,8 @@ const handleSubmit = async () => {
 
   if (!noErrors) return
 
-  const body = {
-    username: username.value,
-    phone: phone.value
-  }
-
   setLoading()
-  await authService.login(body).then((user) => {
+  await authService.login(formFields).then((user) => {
     authService.setUser(user)
     router.push('/todos')
   }).catch((e) => {

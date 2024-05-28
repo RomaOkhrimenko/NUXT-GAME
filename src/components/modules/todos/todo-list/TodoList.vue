@@ -3,7 +3,7 @@
 
     <ul v-if="todos.length" class="todos-container">
       <li :key="todo.id" v-for="todo in todos">
-        <todo-item  :title="todo.title" :completed="todo.completed" :id="todo.id" :user-id="todo.userId" :is-added-to-favorite="todosStore.favoriteTodos.includes(todo.id)" />
+        <todo-item  :title="todo.title" :completed="todo.completed" :id="todo.id" :user-id="todo.userId" :is-added-to-favorite="todosStore.favoriteTodos?.includes(todo.id)" />
       </li>
     </ul>
 

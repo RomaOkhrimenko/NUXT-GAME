@@ -13,6 +13,10 @@ export const useTodosStore = defineStore('todos', {
       this.todos = todos
     },
 
+    addTodo(todo) {
+      this.todos.unshift(todo)
+    },
+
     setFavoriteTodos(favoriteTodos) {
       this.favoriteTodos = favoriteTodos
     },

@@ -6,6 +6,10 @@
       <todos-filters :todoUserIds="todosStore.todosUsersId" @filter:todos="handleTodosFilter" />
     </div>
 
+    <div class="todos-content__create-todo">
+      <CreateTodo />
+    </div>
+
     <h4 v-if="isTodosLoading">TODOS LOADING...</h4>
     <todo-list v-else :todos="todosStore.todos" />
 
@@ -19,6 +23,7 @@ import { useTodos } from '@core/composables/useTodos'
 import TodosFilters from 'components/modules/todos/todos-filters/TodosFilters.vue'
 import { useTodosStore } from 'stores/todos'
 import { STATUS_FILTERS_VALUE } from 'components/modules/todos/todos-filters/constants'
+import CreateTodo from 'components/modules/todos/create-todo/CreateTodo.vue'
 
 const todosStore = useTodosStore()
 
@@ -51,6 +56,9 @@ const handleTodosFilter = (filters) => {
 
 .todos-content__filters-container {
   margin-bottom: 40px;
+}
 
+.todos-content__create-todo {
+  margin-bottom: 40px;
 }
 </style>

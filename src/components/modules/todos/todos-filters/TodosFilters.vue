@@ -10,9 +10,6 @@
       <v-select  v-model="filters.userId" placeholder="Select user" :options="todoUserIds" :clearable="false"></v-select>
     </div>
 
-    <div class="todos-filters__button">
-      <app-button>Create todo</app-button>
-    </div>
   </div>
 </template>
 
@@ -22,7 +19,6 @@
 import { reactive, watch } from 'vue'
 import { STATUS_FILTERS_VALUE, STATUSES_FILTER_DATA } from 'components/modules/todos/todos-filters/constants'
 import AppInput from 'components/modules/ui/app-input.vue'
-import AppButton from 'components/modules/ui/app-button.vue'
 
 defineProps<{todoUserIds: {id: number, userId: number}[]}>()
 

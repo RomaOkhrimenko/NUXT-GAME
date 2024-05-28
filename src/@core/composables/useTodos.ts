@@ -33,7 +33,7 @@ export const useTodos = () => {
 
     localStorage.setItem('favoriteTodos', updatedFavoriteTodos)
 
-    todosStore.setFavoriteTodos(updatedFavoriteTodos)
+    todosStore.setFavoriteTodos(JSON.parse(updatedFavoriteTodos))
   }
 
   const initFavoriteTodos = () => {
@@ -50,7 +50,7 @@ export const useTodos = () => {
       (data) => {
         const favoriteTodos = todosStore.favoriteTodos
 
-        const filteredTodos = data.filter((item) => favoriteTodos.includes(item.id))
+        const filteredTodos = data.filter((item) => favoriteTodos?.includes(item.id))
         todosStore.setTodos(filteredTodos)
 
         isTodosLoading.value = false
@@ -59,5 +59,10 @@ export const useTodos = () => {
     return {isLoading}
   }
 
-  return {getAllTodos, isTodosLoading, addTodoToFavorite, initFavoriteTodos, getFavoriteTodos}
+  const createTodo = (todo) => {
+    todosStore.addTodo(todo)
+  }
+
+
+  return {getAllTodos, isTodosLoading, addTodoToFavorite, initFavoriteTodos, getFavoriteTodos, createTodo}
 }
